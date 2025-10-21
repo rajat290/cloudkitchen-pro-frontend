@@ -7,6 +7,10 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   constructor(private api: ApiService, private router: Router) {}
 
+   saveUserData(user: any, token: string) {
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('token', token);
+  }
   register(userData: any): Observable<any> {
     return this.api.registerUser(userData);
   }

@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private baseUrl = 'http://localhost:3000/api'; // backend base URL
+  private baseUrl = 'http://localhost:5000/api'; // backend base URL
 
   constructor(private http: HttpClient) {}
 
+ // Helper: Auth header
+  private getHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+  }
+
   // ====== AUTH ======
   registerUser(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, data);
+    return this.http.post(`${this.baseUrl}/auth/register`, data);
   }
 
   loginUser(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, data);
+    return this.http.post(`${this.baseUrl}/auth/login`, data);
   }
 
   // ====== DASHBOARD ======
