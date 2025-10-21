@@ -39,6 +39,10 @@ export class ApiService {
     return this.http.delete(`${this.baseUrl}/recipes/${id}`);
   }
 
+  getRecipeById(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/recipes/${id}`);
+  }
+
   // ====== INVENTORY ======
   getInventory(): Observable<any> {
     return this.http.get(`${this.baseUrl}/inventory`);

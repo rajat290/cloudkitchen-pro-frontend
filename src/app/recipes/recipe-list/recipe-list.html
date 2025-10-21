@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Recipe List</h3>
+    <button class="btn btn-primary" routerLink="/recipes/create">+ Add New Recipe</button>
+  </div>
+
+  <div *ngIf="loading" class="text-center mt-5">
+    <div class="spinner-border"></div>
+  </div>
+
+  <div *ngIf="error" class="text-danger text-center">{{ error }}</div>
+
+  <table class="table table-striped mt-3" *ngIf="!loading && recipes.length">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.description }}</td>
+        <td>{{ recipe.createdAt | date }}</td>
+        <td>
+          <button class="btn btn-sm btn-info me-2" (click)="viewRecipe(recipe._id!)">View</button>
+          <button class="btn btn-sm btn-warning me-2" (click)="editRecipe(recipe._id!)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteRecipe(recipe._id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && !recipes.length" class="text-center text-muted">
+    No recipes found.
+  </div>
+</div>

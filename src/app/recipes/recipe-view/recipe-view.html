@@ -1,0 +1,16 @@
+<div class="container mt-4" *ngIf="recipe">
+  <h2>{{ recipe.name }}</h2>
+  <p class="text-muted">{{ recipe.description }}</p>
+
+  <h4>Ingredients</h4>
+  <ul>
+    <li *ngFor="let ing of recipe.ingredients">{{ ing }}</li>
+  </ul>
+
+  <h4>Steps</h4>
+  <ol>
+    <li *ngFor="let step of recipe.steps">{{ step }}</li>
+  </ol>
+
+  <a routerLink="/recipes" class="btn btn-secondary mt-3">Back to Recipes</a>
+</div>
