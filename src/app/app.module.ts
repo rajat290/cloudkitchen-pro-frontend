@@ -1,14 +1,23 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+// import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer';
 
-  
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('cloudkitchen-pro-frontend');
+  constructor(private auth: AuthService) {}
+
+isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
 }

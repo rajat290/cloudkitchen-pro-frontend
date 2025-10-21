@@ -44,11 +44,23 @@ export class ApiService {
   }
 
   // ====== INVENTORY ======
-  getInventory(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/inventory`);
-  }
+  getInventory() {
+  return this.http.get(`${this.baseUrl}/inventory`);
+}
 
-  addInventoryItem(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/inventory`, data);
-  }
+getInventoryById(id: string) {
+  return this.http.get(`${this.baseUrl}/inventory/${id}`);
+}
+
+addInventoryItem(data: any) {
+  return this.http.post(`${this.baseUrl}/inventory`, data);
+}
+
+updateInventoryItem(id: string, data: any) {
+  return this.http.put(`${this.baseUrl}/inventory/${id}`, data);
+}
+
+deleteInventoryItem(id: string) {
+  return this.http.delete(`${this.baseUrl}/inventory/${id}`);
+}
 }

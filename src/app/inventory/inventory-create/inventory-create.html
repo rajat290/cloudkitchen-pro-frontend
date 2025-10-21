@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h3>Add New Inventory Item</h3>
+
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="mt-3">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label>Name</label>
+        <input formControlName="name" class="form-control" />
+      </div>
+
+      <div class="col-md-6">
+        <label>Category</label>
+        <input formControlName="category" class="form-control" />
+      </div>
+
+      <div class="col-md-4">
+        <label>Quantity</label>
+        <input formControlName="quantity" type="number" class="form-control" />
+      </div>
+
+      <div class="col-md-4">
+        <label>Unit</label>
+        <input formControlName="unit" class="form-control" />
+      </div>
+
+      <div class="col-md-4">
+        <label>Cost/Unit</label>
+        <input formControlName="costPerUnit" type="number" class="form-control" />
+      </div>
+
+      <div class="col-md-6 mt-3">
+        <label>Expiry Date</label>
+        <input formControlName="expiryDate" type="date" class="form-control" />
+      </div>
+    </div>
+
+    <button class="btn btn-success mt-4" type="submit">Save Item</button>
+  </form>
+</div>
