@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Welcome, {{ user?.name || 'Chef' }} 👋</h2>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Real-time Statistics Section -->
+  <div class="row g-4">
+    <div class="col-md-4" *ngIf="stats.totalRecipes !== undefined">
+      <div class="card text-center shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title">Total Recipes</h5>
+          <h3>{{ stats.totalRecipes }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngIf="stats.totalInventory !== undefined">
+      <div class="card text-center shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title">Inventory Items</h5>
+          <h3>{{ stats.totalInventory }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngIf="stats.totalUsers !== undefined">
+      <div class="card text-center shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title">Total Users</h5>
+          <h3>{{ stats.totalUsers }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="mt-5">
+    <h4>Quick Actions</h4>
+    <div class="d-flex gap-3 mt-3 flex-wrap">
+      <button routerLink="/recipes" class="btn btn-primary">Manage Recipes</button>
+      <button routerLink="/inventory" class="btn btn-success">Manage Inventory</button>
+    </div>
+  </div>
+</div>
